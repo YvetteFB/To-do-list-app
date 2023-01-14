@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -42,6 +43,15 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(is_complete=False).count()
+
+        search_input = self.request.GET.get('search-area')
+        if search_input is not None:
+            context['tasks'] = context['tasks'].filter(
+                Q(title__icontains=search_input) | Q(description__icontains=search_input)
+            )
+
+            context['search_input'] = search_input
+
         return context
 
 
