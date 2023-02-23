@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-(xhf*wn)wx60xn=fd3-5+%3gs%zy))h)03*bw@o+neaw(zbhzz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['.vercel.app']
 
 # Application definition
 
@@ -78,8 +78,8 @@ DATABASES = {
           'NAME': 'todolist',
           'USER': 'admin',
           'PASSWORD': '1234',
-          'HOST': 'localhost',
-          'PORT': '5432',
+          'HOST': '0.0.0.0',
+          'PORT': 5432,
       }
 }
 
@@ -126,5 +126,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-CSRF_TRUSTED_ORIGINS = ['https://to-do-list-app-production.up.railway.app']
+CSRF_TRUSTED_ORIGINS = ['.vercel.app']
 
