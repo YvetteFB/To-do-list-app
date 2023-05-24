@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User #takes care of user info: email, password. How django handles auth
+from django.contrib.auth.models import User
 from django.utils import timezone
 
 

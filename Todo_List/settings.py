@@ -74,14 +74,11 @@ WSGI_APPLICATION = 'Todo_List.wsgi.application'
 
 DATABASES = {
     'default': {
-          'ENGINE': 'django.db.backends.postgresql_psycopg2',
-          'NAME': 'todolist',
-          'USER': 'admin',
-          'PASSWORD': '1234',
-          'HOST': 'localhost',
-          'PORT': '',
-      }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -125,3 +122,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+CSRF_TRUSTED_ORIGINS = ['https://*.vercel.app']
+

@@ -43,6 +43,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(user=self.request.user)
         context['count'] = context['tasks'].filter(is_complete=False).count()
+    
 
         search_input = self.request.GET.get('search-area')
         if search_input is not None:
@@ -63,7 +64,7 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'is_complete']
+    fields = ['title', 'description', 'is_complete', 'due_date']
     success_url = reverse_lazy('tasks')
 
     def form_valid(self, form):
